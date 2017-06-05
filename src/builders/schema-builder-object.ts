@@ -37,31 +37,16 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
         return new SchemaBuilder(prop, name, this.schema);
     }
 
+    additionalProperties(val: boolean | SchemaModel): SchemaBuilderObject {
+        this.schema.additionalProperties = val;
+        return this;
+    }
+
     constructor(schema?: SchemaModel, name?: string, parent?: SchemaModel) {
         super(schema, name, parent);
 
         this.schema.type = SimpleTypes.object;
     }
-
-    // addObject(name: string): SchemaBuilderObject {
-    //     return new SchemaBuilderObject(this.newProp(name), name);
-    // }
-
-    // addString(name: string): SchemaBuilderString {
-    //     return new SchemaBuilderString(this.newProp(name), name);
-    // }
-
-    // addBool(name: string): SchemaBuilderBool {
-    //     return new SchemaBuilderBool(this.newProp(name), name);
-    // }
-
-    // addInt(name: string): SchemaBuilderInt {
-    //     return new SchemaBuilderInt(this.newProp(name), name);
-    // }
-
-    // addArray(name: string): SchemaBuilderArray {
-    //     return new SchemaBuilderArray(this.newProp(name), name);
-    // }
 
     /**
      * Add a proeprty to the current schema.

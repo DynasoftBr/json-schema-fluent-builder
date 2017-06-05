@@ -5,35 +5,36 @@ This package allows you to fluent build schemas based on draft-04 to validate js
 ## Getting started
 
 ## Supported
-- [ ] id
-- [ ] $schema
-- [x] title
-- [x] description
-- [x] default
-- [ ] multipleOf
-- [x] maximum
-- [x] exclusiveMaximum
-- [x] minimum
-- [x] exclusiveMinimum
-- [x] maxLength
-- [x] minLength
-- [x] pattern
-- [ ] additionalItems
-- [x] items
-- [x] maxItems
-- [x] minItems
-- [x] uniqueItems
-- [ ] maxProperties
-- [ ] minProperties
-- [x] required
-- [ ] additionalProperties
-- [ ] definitions
-- [x] properties
-- [ ] patternProperties
-- [ ] dependencies
-- [x] enum
-- [ ] type
+- [x] $ref
+- [x] $schema
+- [x] additionalItems
+- [x] additionalProperties
 - [ ] allOf
 - [ ] anyOf
-- [ ] oneOf
+- [ ] definitions
+- [] dependencies
+- [x] id
+- [x] maxProperties
+- [x] minProperties
+- [x] multipleOf
 - [ ] not
+- [ ] oneOf
+- [ ] patternProperties
+- [x] type
+- [x] default
+- [x] description
+- [x] enum
+- [x] exclusiveMaximum
+- [x] exclusiveMinimum
+- [x] items
+- [x] maximum
+- [x] maxItems
+- [x] maxLength
+- [x] minimum
+- [x] minItems
+- [x] minLength
+- [x] pattern
+- [x] properties
+- [x] required
+- [x] title
+- [x] uniqueItems

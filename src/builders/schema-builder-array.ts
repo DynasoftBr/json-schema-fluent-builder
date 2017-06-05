@@ -49,7 +49,29 @@ export class SchemaBuilderArray extends SchemaBuilderCore<SchemaBuilderArray>
      * Configures the validation of array values.
      */
     items(): SchemaBuilder {
+        if (this.items)
+            throw new Error("Items property already initialized.");
         this.schema.items = <SchemaModel>{};
         return new SchemaBuilder(this.schema.items);
+    }
+
+    /**
+     * Sets the validation of this array.
+     * @param items An array of SchemaModel.
+     */
+    itemsArray(items: SchemaModel[]): SchemaBuilderArray {
+        if (!items && !Array.isArray(items))
+            throw new Error("The items parameter must be a valid array.");
+
+        if (this.items)
+            throw new Error("Items property already initialized.");
+
+        this.schema.items = items;
+        return this;
+    }
+
+    additionalItems(val: boolean | SchemaModel): SchemaBuilderArray {
+        this.schema.additionalItems = val;
+        return this;
     }
 }

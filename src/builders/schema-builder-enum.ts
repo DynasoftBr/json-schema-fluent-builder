@@ -10,7 +10,7 @@ import { EnumBuilder } from "./interfaces";
 export class SchemaBuilderEnum extends SchemaBuilderCore<SchemaBuilderEnum>
     implements EnumBuilder<SchemaBuilderEnum> {
 
-    constructor(schema: SchemaModel, params: string[], name?: string, parent?: SchemaModel) {
+    constructor(schema: SchemaModel, params: any[], name?: string, parent?: SchemaModel) {
         super(schema, name, parent);
 
         this.schema.enum = params;

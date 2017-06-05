@@ -1,19 +1,19 @@
 import { SchemaBuilderCore } from "./";
 import { SchemaBuilder } from "./schema-builder";
 import { SimpleTypes, SchemaModel } from "../models/";
-import { IntBuilder } from "./interfaces";
+import { NumberBuilder } from "./interfaces";
 
 /**
  * Exposes methods to validate number fields in json documents.
  * @class
  */
 export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
-    implements IntBuilder<SchemaBuilderNumber> {
+    implements NumberBuilder<SchemaBuilderNumber> {
 
     constructor(schema: SchemaModel, name?: string, parent?: SchemaModel) {
         super(schema, name, parent);
 
-        this.schema.type = SimpleTypes.integer;
+        this.schema.type = SimpleTypes.number;
     }
 
     /**
@@ -36,5 +36,16 @@ export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
         this.schema.minimum = i;
         this.schema.exclusiveMinimum = exclusive;
         return this;
+    }
+
+    multipleOf(val: number): SchemaBuilderNumber {
+        if (!val)
+            throw new Error("The parameter 'val' is required.");
+
+        if (val < 0)
+            throw new Error("The parameter 'val' must be greater than 0.");
+
+        this.schema.multipleOf = val;
+        return this
     }
 }

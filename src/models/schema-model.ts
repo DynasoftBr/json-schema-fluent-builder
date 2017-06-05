@@ -1,6 +1,7 @@
 import { SimpleTypes } from "./simple-types";
 
 export interface SchemaModel {
+    id?: string;
     $schema?: string;
     description?: string;
     title?: string;
@@ -25,9 +26,11 @@ export interface SchemaModel {
     maxItems?: number;
     minItems?: number;
     uniqueItems?: boolean;
-    items?: SchemaModel;
+    items?: SchemaModel | SchemaModel[];
+    additionalItems?: boolean | SchemaModel;
 
     // Object validation
+    additionalProperties?: boolean | SchemaModel;
     maxProperties?: number;
     minProperties?: number;
     required?: string[];

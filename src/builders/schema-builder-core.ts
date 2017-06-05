@@ -7,6 +7,15 @@ import { SchemaBuilder } from "./schema-builder";
  * @class
  */
 export abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
+    id(s: string): T {
+        this.schema.id = s;
+        return <T><any>this;
+    }
+
+    $schema(s: string): T {
+        this.schema.$schema = s;
+        return <T><any>this;
+    }
 
     /**
      * Sets a description for the property.
