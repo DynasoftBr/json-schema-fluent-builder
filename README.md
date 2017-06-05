@@ -7,7 +7,7 @@ This package allows you to fluent build schemas based on draft-04 to validate js
 TODO
 
 ## Supported
-- [x] $ref
+- [ ] $ref
 - [x] $schema
 - [x] additionalItems
 - [x] additionalProperties
