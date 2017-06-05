@@ -1,17 +1,17 @@
 {
-  "name": "poseidon",
+  "name": "json schema fluent builder",
   "version": "0.1.0",
-  "description": "Framework web API to build CRUD aplications",
+  "description": "A package to build json schemas.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Leandro-Albano/poseidon.git"
+    "url": "https://github.com/DynasoftBr/json-schema-fluent-builder"
   },
   "author": "Leandro Albano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Leandro-Albano/poseidon/issues"
+    "url": "https://github.com/DynasoftBr/json-schema-fluent-builder/issues"
   },
-  "homepage": "https://github.com/Leandro-Albano/poseidon",
+  "homepage": "https://github.com/DynasoftBr/json-schema-fluent-builder",
   "scripts": {
     "start": "npm run build && npm run watch",
     "build": "npm run build-ts && npm run tslint",
