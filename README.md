@@ -1,3 +1,5 @@
-# A simple package to build json schemas
+## A simple package to build json schemas
 
-# Getting started
+This package allows you to fluent build schemas based on draft-04 to validate json objects.
+
+## Getting started
