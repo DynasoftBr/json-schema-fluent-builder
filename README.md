@@ -1,2 +1,3 @@
-#A simple package to build json schemas
-#Getting started
+# A simple package to build json schemas
+
+# Getting started
