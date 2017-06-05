@@ -12,7 +12,7 @@ This package allows you to fluent build schemas based on draft-04 to validate js
 - [ ] allOf
 - [ ] anyOf
 - [ ] definitions
-- [] dependencies
+- [ ] dependencies
 - [x] id
 - [x] maxProperties
 - [x] minProperties
