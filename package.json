@@ -1,7 +1,7 @@
 {
-  "name": "json schema fluent builder",
+  "name": "json-schema-fluent-builder",
   "version": "0.1.0",
-  "description": "A package to build json schemas.",
+  "description": "A package to fluent build json schemas.",
   "repository": {
     "type": "git",
     "url": "https://github.com/DynasoftBr/json-schema-fluent-builder"
