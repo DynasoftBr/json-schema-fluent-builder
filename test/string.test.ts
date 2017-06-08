@@ -25,4 +25,14 @@ describe("String test", () => {
     it("Property 'format' must be equal 'date-time'.", () => {
         expect(schema.format(Formats.dateTime).getSchema()).deep.include({ format: "date-time" });
     });
+
+    it("Full check.", () => {
+        expect(schema.getSchema()).deep.equals({
+            type: "string",
+            maxLength: 10,
+            minLength: 5,
+            pattern: "[a-z]",
+            format: "date-time"
+        });
+    });
 });

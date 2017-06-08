@@ -38,10 +38,10 @@ export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
     }
 
     multipleOf(val: number): SchemaBuilderNumber {
-        if (!val)
+        if (val == undefined)
             throw new Error("The parameter 'val' is required.");
 
-        if (val < 0)
+        if (val <= 0)
             throw new Error("The parameter 'val' must be greater than 0.");
 
         this.schema.multipleOf = val;

@@ -33,4 +33,17 @@ describe("Array test", () => {
         expect(schema.items(...items, new SchemaBuilder().string()).getSchema())
             .deep.include({ items: [{ type: "number" }, { type: "number" }, { type: "string" }] });
     });
+
+    it("Full check.", () => {
+        let items = [new SchemaBuilder().number()];
+
+        expect(schema.getSchema())
+            .deep.equals({
+                type: "array",
+                uniqueItems: true,
+                maxItems: 5,
+                minItems: 1,
+                items: [{ type: "number" }, { type: "number" }, { type: "string" }]
+            });
+    });
 });

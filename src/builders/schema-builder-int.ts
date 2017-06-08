@@ -12,6 +12,6 @@ export class SchemaBuilderInt extends SchemaBuilderNumber
     constructor() {
         super();
 
-        this.schema.type = SimpleTypes.number;
+        this.schema.type = SimpleTypes.integer;
     }
 }

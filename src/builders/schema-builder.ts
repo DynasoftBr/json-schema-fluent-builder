@@ -42,7 +42,7 @@ export class SchemaBuilder {
      * @return SchemaBuilderInt. It allows to set validations for integers.
      */
     int(): SchemaBuilderInt {
-        return new SchemaBuilderNumber();
+        return new SchemaBuilderInt();
     }
 
     /**
