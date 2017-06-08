@@ -1,7 +1,6 @@
 import { SchemaBuilderCore } from "./";
-import { SchemaBuilder } from "./schema-builder";
 import { SimpleTypes, SchemaModel } from "../models/";
-import { ArrayBuilder } from "./interfaces";
+import { ArrayBuilder, CoreBuilder } from "./interfaces";
 
 /**
  * Exposes methods to validate arrays in json documents.
@@ -10,11 +9,10 @@ import { ArrayBuilder } from "./interfaces";
 export class SchemaBuilderArray extends SchemaBuilderCore<SchemaBuilderArray>
     implements ArrayBuilder<SchemaBuilderArray> {
 
+    constructor() {
+        super();
 
-    constructor(schema: SchemaModel, name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
-
-        this.schema.type = SimpleTypes.string;
+        this.schema.type = SimpleTypes.array;
     }
 
     /**
@@ -37,7 +35,7 @@ export class SchemaBuilderArray extends SchemaBuilderCore<SchemaBuilderArray>
 
     /**
      * Set if the array must have unique values.
-     * @param b A boolean the idicates if the array must have unique values. 
+     * @param b A boolean the idicates if the array must have unique values.
      * True for unique values, otherwise false.
      */
     uniqueItems(b: boolean): SchemaBuilderArray {
@@ -46,32 +44,50 @@ export class SchemaBuilderArray extends SchemaBuilderCore<SchemaBuilderArray>
     }
 
     /**
-     * Configures the validation of array values.
-     */
-    items(): SchemaBuilder {
-        if (this.items)
-            throw new Error("Items property already initialized.");
-        this.schema.items = <SchemaModel>{};
-        return new SchemaBuilder(this.schema.items);
-    }
-
-    /**
-     * Sets the validation of this array.
+     * Sets the validation of the items.
      * @param items An array of SchemaModel.
      */
-    itemsArray(items: SchemaModel[]): SchemaBuilderArray {
-        if (!items && !Array.isArray(items))
-            throw new Error("The items parameter must be a valid array.");
+    items(...items: CoreBuilder<any>[]): SchemaBuilderArray {
+        let schemaItems: SchemaModel[] = [];
 
-        if (this.items)
-            throw new Error("Items property already initialized.");
+        // Iterate all items and add the generated schema to schemaItems var.
+        items.forEach(itm => {
+            schemaItems.push(itm.getSchema());
+        });
 
-        this.schema.items = items;
+        if (!this.schema.items) {
+            // If the array contains only one SchemaModel, set '.items' property to single object.
+            if (items.length == 1)
+                this.schema.items = schemaItems[0];
+            else
+                this.schema.items = schemaItems;
+        } else {
+
+            // If the current value of schema.items is an array, concat it with the new items.
+            if (Array.isArray(this.schema.items))
+                schemaItems = this.schema.items.concat(schemaItems);
+            else // In this case the value is an object and we add it to our new items array.
+                schemaItems.unshift(this.schema.items);
+
+            // Update the value of schema.items.
+            this.schema.items = schemaItems;
+        }
+
         return this;
     }
 
-    additionalItems(val: boolean | SchemaModel): SchemaBuilderArray {
-        this.schema.additionalItems = val;
+    /**
+     * Indicate if this array accepts additional items.
+     * @param val A boolean indicating if the array accepts additional items,
+     * or an SchemaModel indicating the validation of additional items.
+     */
+    additionalItems(val: boolean | CoreBuilder<any>): SchemaBuilderArray {
+
+        if (val instanceof Object)
+            this.schema.additionalItems = (<CoreBuilder<any>>val).getSchema();
+        else
+            this.schema.additionalItems = val;
+
         return this;
     }
 }

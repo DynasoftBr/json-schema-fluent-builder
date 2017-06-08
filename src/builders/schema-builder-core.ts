@@ -1,12 +1,13 @@
-import { SchemaModel, SimpleTypes } from "../models/";
+import { SchemaModel } from "../models/";
 import { CoreBuilder } from "./interfaces";
-import { SchemaBuilder } from "./schema-builder";
 
 /**
  * Exposes core methods to validate json documents.
  * @class
  */
 export abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
+    protected schema: SchemaModel;
+
     id(s: string): T {
         this.schema.id = s;
         return <T><any>this;
@@ -47,14 +48,15 @@ export abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
     /**
      * Sets if the current property is required
      */
-    required(): T {
-        if (!this.propName)
-            throw new Error("Required can be only called from object's property.");
+    required(...requireds: string[]): T {
+        if (this.schema.required)
+            this.schema.required = [];
 
-        if (!this.parent.required)
-            this.parent.required = [];
+        this.schema.required.concat(requireds);
+        this.schema.required.filter((item, index, input) => {
+            return input.indexOf(item) == index;
+        });
 
-        this.parent.required.push(this.propName);
         return <T><any>this;
     }
 
@@ -66,13 +68,16 @@ export abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
     }
 
     /**
-     * 
-     * @param schema The object that represents a schema to stats, 
+     * @param schema The object that represents a schema to stats,
      * it's usually set when building a new property for an object.
      * @param propName The name of the property that is building.
      * @param parent the parent object that owns this property.
      */
-    protected constructor(protected schema?: SchemaModel, protected propName?: string, private parent?: SchemaModel) {
-        this.schema = schema || {};
+    protected constructor() {
+        this.schema = {};
+    }
+
+    json() {
+        return this.schema;
     }
 }

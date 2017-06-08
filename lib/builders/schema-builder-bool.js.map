@@ -1,0 +1,1 @@
+{"version":3,"file":"schema-builder-bool.js","sourceRoot":"","sources":["../../src/builders/schema-builder-bool.ts"],"names":[],"mappings":";;AAAA,yBAAuC;AACvC,iCAAyC;AAGzC;;;GAGG;AACH,uBAA+B,SAAQ,oBAAoC;IAGvE;QACI,KAAK,EAAE,CAAC;QAER,IAAI,CAAC,MAAM,CAAC,IAAI,GAAG,cAAW,CAAC,OAAO,CAAC;IAC3C,CAAC;CAEJ;AATD,8CASC"}

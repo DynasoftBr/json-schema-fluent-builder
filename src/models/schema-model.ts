@@ -16,7 +16,7 @@ export interface SchemaModel {
     minimum?: number;
     exclusiveMinimum?: boolean;
 
-    // String validation  
+    // String validation
     maxLength?: number;
     minLength?: number;
     pattern?: string;

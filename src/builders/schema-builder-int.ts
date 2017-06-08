@@ -1,7 +1,6 @@
-import { SchemaBuilderCore, SchemaBuilderNumber } from "./";
-import { SchemaBuilder } from "./schema-builder";
-import { SimpleTypes, SchemaModel } from "../models/";
-import { NumberBuilder, IntBuilder } from "./interfaces";
+import { SchemaBuilderNumber } from "./";
+import { SimpleTypes } from "../models/";
+import { IntBuilder } from "./interfaces";
 
 /**
  * Exposes methods to validate number fields in json documents.
@@ -10,8 +9,8 @@ import { NumberBuilder, IntBuilder } from "./interfaces";
 export class SchemaBuilderInt extends SchemaBuilderNumber
     implements IntBuilder<SchemaBuilderInt> {
 
-    constructor(schema: SchemaModel, name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
+    constructor() {
+        super();
 
         this.schema.type = SimpleTypes.number;
     }

@@ -1,0 +1,1 @@
+{"version":3,"file":"formats.js","sourceRoot":"","sources":["../../src/models/formats.ts"],"names":[],"mappings":";;AAAA,MAAM,OAAO,GAAG;IACZ,QAAQ,EAAE,WAAW;IACrB,KAAK,EAAE,OAAO;IACd,QAAQ,EAAE,UAAU;IACpB,IAAI,EAAE,MAAM;IACZ,IAAI,EAAE,MAAM;IACZ,GAAG,EAAE,KAAK;IACV,YAAY,EAAE,eAAe;IAC7B,WAAW,EAAE,cAAc;IAC3B,WAAW,EAAE,cAAc;CAC9B,CAAC;AAIO,0BAAO"}

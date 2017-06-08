@@ -1,6 +1,4 @@
 import { SchemaBuilderCore } from "./";
-import { SchemaBuilder } from "./schema-builder";
-import { SimpleTypes, SchemaModel } from "../models/";
 import { EnumBuilder } from "./interfaces";
 
 /**
@@ -10,8 +8,8 @@ import { EnumBuilder } from "./interfaces";
 export class SchemaBuilderEnum extends SchemaBuilderCore<SchemaBuilderEnum>
     implements EnumBuilder<SchemaBuilderEnum> {
 
-    constructor(schema: SchemaModel, params: any[], name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
+    constructor(...params: any[]) {
+        super();
 
         this.schema.enum = params;
     }

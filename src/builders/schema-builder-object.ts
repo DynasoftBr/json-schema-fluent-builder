@@ -1,5 +1,4 @@
 import { SchemaBuilderCore } from "./";
-import { SchemaBuilder } from "./schema-builder";
 import { SimpleTypes, SchemaModel } from "../models/";
 import { ObjectBuilder } from "./interfaces";
 
@@ -29,12 +28,27 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
     }
 
     /**
-     * Add a property to the current schema.
-     * @param name Property's name.
+     * Sets the properties of this schema.
+     * @param props An object the holds subschemas to validate properties of this schema.
      */
-    addProp(name: string): SchemaBuilder {
-        let prop = this.newProp(name);
-        return new SchemaBuilder(prop, name, this.schema);
+    props(props: object): SchemaBuilderObject {
+        this.schema.properties = props;
+        return this;
+    }
+
+    prop(name: string, propSchema?: SchemaModel, required?: boolean) {
+        if (!name || typeof name !== "string")
+            throw new Error("Parameter 'name' must be a non empty string.");
+
+        if (propSchema) {
+            if (!this.schema.properties)
+                this.schema.properties = {};
+
+            (<any>this.schema.properties)[name] = propSchema;
+        }
+
+        if (required)
+            super.required(name);
     }
 
     additionalProperties(val: boolean | SchemaModel): SchemaBuilderObject {
@@ -42,20 +56,9 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
         return this;
     }
 
-    constructor(schema?: SchemaModel, name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
+    constructor() {
+        super();
 
         this.schema.type = SimpleTypes.object;
-    }
-
-    /**
-     * Add a proeprty to the current schema.
-     * @param name Property's name.
-     */
-    private newProp(name: string): SchemaModel {
-        if (!this.schema.properties)
-            this.schema.properties = {};
-
-        return (<any>this.schema.properties)[name] = <SchemaModel>{};
     }
 }

@@ -1,6 +1,5 @@
 import { SchemaBuilderCore } from "./";
-import { SchemaBuilder } from "./schema-builder";
-import { SimpleTypes, SchemaModel } from "../models/";
+import { SimpleTypes } from "../models/";
 import { NumberBuilder } from "./interfaces";
 
 /**
@@ -10,8 +9,8 @@ import { NumberBuilder } from "./interfaces";
 export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
     implements NumberBuilder<SchemaBuilderNumber> {
 
-    constructor(schema: SchemaModel, name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
+    constructor() {
+        super();
 
         this.schema.type = SimpleTypes.number;
     }
@@ -46,6 +45,6 @@ export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
             throw new Error("The parameter 'val' must be greater than 0.");
 
         this.schema.multipleOf = val;
-        return this
+        return this;
     }
 }

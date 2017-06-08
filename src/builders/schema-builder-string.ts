@@ -1,6 +1,5 @@
 import { SchemaBuilderCore } from "./";
-import { SchemaBuilder } from "./schema-builder";
-import { SimpleTypes, SchemaModel, formats } from "../models/";
+import { SimpleTypes, Formats } from "../models/";
 import { StringBuilder } from "./interfaces";
 
 /**
@@ -10,8 +9,8 @@ import { StringBuilder } from "./interfaces";
 export class SchemaBuilderString extends SchemaBuilderCore<SchemaBuilderString>
     implements StringBuilder<SchemaBuilderString> {
 
-    constructor(schema: SchemaModel, name?: string, parent?: SchemaModel) {
-        super(schema, name, parent);
+    constructor() {
+        super();
 
         this.schema.type = SimpleTypes.string;
     }
@@ -39,18 +38,16 @@ export class SchemaBuilderString extends SchemaBuilderCore<SchemaBuilderString>
      * @param i The regex pattern.
      */
     pattern(s: string): SchemaBuilderString {
-        let regEx = new RegExp(s);
-
         this.schema.pattern = s;
         return this;
     }
 
     /**
      * A format to be validated
-     * @param i The format to be validated, must be one of: date-time, email, hostname, ipv4, 
+     * @param i The format to be validated, must be one of: date-time, email, hostname, ipv4,
      * ipv6, uri, uri-reference", uri-template, json-pointer.
      */
-    format(s: formats): SchemaBuilderString {
+    format(s: Formats): SchemaBuilderString {
         this.schema.format = s;
         return this;
     }

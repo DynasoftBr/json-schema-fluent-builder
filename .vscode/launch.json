@@ -8,13 +8,13 @@
             "type": "node",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceRoot}\\dist\\test",
+            "program": "${workspaceRoot}\\lib\\index",
             "smartStep": true,
             "outFiles": [
-                "../dist/**/*.js"
+                "../lib/**/*.js"
             ],
             "protocol": "inspector",
-            "preLaunchTask": "tsc",
+            "preLaunchTask": "start",
             "sourceMaps": true
         }
     ]

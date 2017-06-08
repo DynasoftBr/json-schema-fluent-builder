@@ -1,14 +1,15 @@
-function strEnum<T extends string>(o: Array<T>): {[K in T]: K} {
-    return o.reduce((res, key) => {
-        res[key] = key;
-        return res;
-    }, Object.create(null));
-}
+const Formats = {
+    dateTime: "date-time",
+    email: "email",
+    hostname: "hostname",
+    ipv4: "ipv4",
+    ipv6: "ipv6",
+    uri: "uri",
+    uriReference: "uri-reference",
+    uriTemplate: "uri-template",
+    jsonPointer: "json-pointer"
+};
 
-export const formats = strEnum(["date-time",
-    "email", "hostname",
-    "ipv4", "ipv6",
-    "uri", "uri-reference",
-    "uri-template", "json-pointer"]);
+type Formats = (typeof Formats)[keyof typeof Formats];
 
-export type formats = keyof typeof formats;
+export { Formats };

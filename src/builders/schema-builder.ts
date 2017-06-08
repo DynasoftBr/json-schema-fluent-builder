@@ -1,19 +1,16 @@
-import { SchemaBuilderObject, SchemaBuilderString, SchemaBuilderBool, SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum } from "./"; // 
-import { SchemaModel } from "../models";
+import {
+    SchemaBuilderObject, SchemaBuilderString, SchemaBuilderBool,
+    SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum, SchemaBuilderInt
+} from "./";
 
 export class SchemaBuilder {
-
-    constructor(private schema?: SchemaModel, private name?: string, private parent?: SchemaModel) {
-        if (!schema)
-            this.schema = {};
-    }
 
     /**
      * Starts building a schema as an object.
      * @return SchemaBuilderObject. It allows to set validations for objects.
      */
     object(): SchemaBuilderObject {
-        return new SchemaBuilderObject(this.schema, this.name, this.parent);
+        return new SchemaBuilderObject();
     }
 
     /**
@@ -21,7 +18,7 @@ export class SchemaBuilder {
      * @return SchemaBuilderString. It allows to set validations for strings.
      */
     string(): SchemaBuilderString {
-        return new SchemaBuilderString(this.schema, this.name, this.parent);
+        return new SchemaBuilderString();
     }
 
     /**
@@ -29,7 +26,7 @@ export class SchemaBuilder {
      * @return SchemaBuilderBool. It allows to set validations for booleans.
      */
     bool(): SchemaBuilderBool {
-        return new SchemaBuilderBool(this.schema, this.name, this.parent);
+        return new SchemaBuilderBool();
     }
 
     /**
@@ -37,22 +34,30 @@ export class SchemaBuilder {
      * @return SchemaBuilderArray. It allows to set validations for arrays.
      */
     array(): SchemaBuilderArray {
-        return new SchemaBuilderArray(this.schema, this.name, this.parent);
+        return new SchemaBuilderArray();
     }
 
     /**
      * Starts building a schema as an integers.
      * @return SchemaBuilderInt. It allows to set validations for integers.
      */
-    int(): SchemaBuilderNumber {
-        return new SchemaBuilderNumber(this.schema, this.name, this.parent);
+    int(): SchemaBuilderInt {
+        return new SchemaBuilderNumber();
+    }
+
+    /**
+     * Starts building a schema as an integers.
+     * @return SchemaBuilderInt. It allows to set validations for integers.
+     */
+    number(): SchemaBuilderNumber {
+        return new SchemaBuilderNumber();
     }
 
     /**
      * Starts building a schema as an enum.
      * @return SchemaBuilderEnum. It allows to set validations for enums.
      */
-    enum(params: string[]): SchemaBuilderEnum {
-        return new SchemaBuilderEnum(this.schema, params, this.name, this.parent);
+    enum(...params: any[]): SchemaBuilderEnum {
+        return new SchemaBuilderEnum(...params);
     }
 }

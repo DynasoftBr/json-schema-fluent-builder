@@ -1,3 +1,3 @@
 import { SchemaBuilder } from "./builders/schema-builder";
 
-export let jsfb = new SchemaBuilder();
+export { SchemaBuilder } from "./builders/schema-builder";

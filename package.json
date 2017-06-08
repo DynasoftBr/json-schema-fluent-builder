@@ -13,13 +13,10 @@
   },
   "homepage": "https://github.com/DynasoftBr/json-schema-fluent-builder",
   "scripts": {
-    "start": "npm run build && npm run watch",
+    "start": "npm run build",
     "build": "npm run build-ts && npm run tslint",
-    "serve": "node dist/server.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"nodemon dist/server.js\"",
-    "test": "mocha dist/test",
+    "test": "mocha test/ --compilers ts:ts-node/register --recursive",
     "build-ts": "tsc",
-    "watch-ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "devDependencies": {
@@ -27,8 +24,13 @@
     "@types/mocha": "2.2.41",
     "@types/chai": "4.0.0",
     "tslint": "^5.0.0",
-    "typescript": "^2.2.2",
+    "tslint-eslint-rules": "4.1.1",
+    "tslint-language-service": "0.9.6",
+    "typescript": "2.3.4",
     "mocha": "3.4.2",
-    "chai": "4.0.1"
-  }
+    "chai": "4.0.1",
+    "ts-node": "3.0.6"
+  },
+  "main": "index",
+  "types": "index.d.ts"
 }
