@@ -16,7 +16,7 @@
     "start": "npm run build",
     "rimraf": "rimraf",
     "build": "npm run clean:lib && npm run build-ts && npm run tslint",
-    "test": "mocha test/ --compilers ts:ts-node/register --recursive",
+    "test": "mocha tests/ --compilers ts:ts-node/register --recursive",
     "build-ts": "tsc",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "clean:lib": "npm run rimraf -- lib"
@@ -35,5 +35,9 @@
     "ts-node": "3.0.6"
   },
   "main": "index",
-  "types": "index.d.ts"
+  "types": "index.d.ts",
+  "dependencies": {
+    "json-schema-builder": "0.0.5",
+    "typescript": "2.3.4"
+  }
 }

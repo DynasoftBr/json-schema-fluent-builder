@@ -1,5 +1,5 @@
 import { SchemaBuilderCore } from "./";
-import { SimpleTypes, Formats } from "../models/";
+import { SimpleTypes, Formats, SchemaModel } from "../models/";
 import { StringBuilder } from "./interfaces";
 
 /**
@@ -9,8 +9,8 @@ import { StringBuilder } from "./interfaces";
 export class SchemaBuilderString extends SchemaBuilderCore<SchemaBuilderString>
     implements StringBuilder<SchemaBuilderString> {
 
-    constructor() {
-        super();
+    constructor(schema?: SchemaModel) {
+        super(schema);
 
         this.schema.type = SimpleTypes.string;
     }

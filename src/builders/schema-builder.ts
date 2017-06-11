@@ -1,7 +1,8 @@
 import {
     SchemaBuilderObject, SchemaBuilderString, SchemaBuilderBool,
-    SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum, SchemaBuilderInt
+    SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum, SchemaBuilderInt, SchemaBuilderGeneric
 } from "./";
+import { SimpleTypes } from "../models";
 
 export class SchemaBuilder {
 
@@ -59,5 +60,13 @@ export class SchemaBuilder {
      */
     enum(...params: any[]): SchemaBuilderEnum {
         return new SchemaBuilderEnum(...params);
+    }
+
+    type(...types: SimpleTypes[]): SchemaBuilderGeneric {
+        return new SchemaBuilderGeneric({}, ...types);
+    }
+
+    $ref(ref: string) {
+        return new SchemaBuilderGeneric({}).$ref(ref);
     }
 }

@@ -1,5 +1,5 @@
 import { SchemaBuilderNumber } from "./";
-import { SimpleTypes } from "../models/";
+import { SimpleTypes, SchemaModel } from "../models/";
 import { IntBuilder } from "./interfaces";
 
 /**
@@ -9,8 +9,8 @@ import { IntBuilder } from "./interfaces";
 export class SchemaBuilderInt extends SchemaBuilderNumber
     implements IntBuilder<SchemaBuilderInt> {
 
-    constructor() {
-        super();
+    constructor(schema?: SchemaModel) {
+        super(schema);
 
         this.schema.type = SimpleTypes.integer;
     }

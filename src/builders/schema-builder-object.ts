@@ -1,6 +1,6 @@
 import { SchemaBuilderCore } from "./";
 import { SimpleTypes, SchemaModel } from "../models/";
-import { ObjectBuilder } from "./interfaces";
+import { ObjectBuilder, CoreBuilder } from "./interfaces";
 
 /**
  * Exposes methods to validate object fields in json documents.
@@ -32,11 +32,18 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
      * @param props An object the holds subschemas to validate properties of this schema.
      */
     props(props: object): SchemaBuilderObject {
+
+        Object.keys(props).forEach(function (key, index) {
+            if ((<any>props)[key] instanceof SchemaBuilderCore) {
+                (<any>props)[key] = (<SchemaBuilderCore<any>>(<any>props)[key]).getSchema();
+            }
+        });
+
         this.schema.properties = props;
         return this;
     }
 
-    prop(name: string, propSchema?: SchemaModel, required?: boolean) {
+    prop(name: string, propSchema?: SchemaModel | CoreBuilder<any>, required?: boolean): SchemaBuilderObject {
         if (!name || typeof name !== "string")
             throw new Error("Parameter 'name' must be a non empty string.");
 
@@ -49,15 +56,36 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
 
         if (required)
             super.required(name);
-    }
 
-    additionalProperties(val: boolean | SchemaModel): SchemaBuilderObject {
-        this.schema.additionalProperties = val;
         return this;
     }
 
-    constructor() {
-        super();
+    additionalProperties(val: boolean | SchemaModel | SchemaBuilderCore<any>): SchemaBuilderObject {
+        if (val instanceof SchemaBuilderCore)
+            this.schema.additionalProperties = val.getSchema();
+        else
+            this.schema.additionalProperties = val;
+
+        return this;
+    }
+
+    patternProperties(props: object): SchemaBuilderObject {
+        Object.keys(props).forEach(function (key, index) {
+            if ((<any>props)[key] instanceof SchemaBuilderCore)
+                (<any>props)[key] = (<SchemaBuilderCore<any>>(<any>props)[key]).getSchema();
+        });
+
+        this.schema.patternProperties = props;
+        return this;
+    }
+
+    dependencies(val: object): SchemaBuilderObject {
+        this.schema.dependencies = val;
+        return this;
+    }
+
+    constructor(schema?: SchemaModel) {
+        super(schema);
 
         this.schema.type = SimpleTypes.object;
     }

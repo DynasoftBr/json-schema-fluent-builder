@@ -1,12 +1,12 @@
 import { SchemaBuilderCore } from "./";
-import { Formats } from "../models/";
+import { Formats, SchemaModel } from "../models/";
 import { StringBuilder } from "./interfaces";
 /**
  * Exposes methods to validate string fields in json documents.
  * @class
  */
 export declare class SchemaBuilderString extends SchemaBuilderCore<SchemaBuilderString> implements StringBuilder<SchemaBuilderString> {
-    constructor();
+    constructor(schema?: SchemaModel);
     /**
      * Sets the maximum length for the property.
      * @param i A number idicating the maximum length for the property.

@@ -6,8 +6,9 @@ import { CoreBuilder } from "./interfaces";
  */
 export declare abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
     protected schema: SchemaModel;
-    id(s: string): T;
+    $id(s: string): T;
     $schema(s: string): T;
+    $ref(s: string): T;
     /**
      * Sets a description for the property.
      * @param desc A description for the property.
@@ -27,6 +28,11 @@ export declare abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
      * Sets if the current property is required
      */
     required(...requireds: string[]): T;
+    allOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
+    anyOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
+    oneOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
+    not(val: SchemaModel | CoreBuilder<any>): T;
+    definations(val: object): T;
     /**
      * @return The current schema.
      */
@@ -37,6 +43,6 @@ export declare abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
      * @param propName The name of the property that is building.
      * @param parent the parent object that owns this property.
      */
-    protected constructor();
+    protected constructor(schema?: SchemaModel);
     json(): SchemaModel;
 }

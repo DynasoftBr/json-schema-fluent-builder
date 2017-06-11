@@ -1,4 +1,5 @@
-import { SchemaBuilderObject, SchemaBuilderString, SchemaBuilderBool, SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum, SchemaBuilderInt } from "./";
+import { SchemaBuilderObject, SchemaBuilderString, SchemaBuilderBool, SchemaBuilderArray, SchemaBuilderNumber, SchemaBuilderEnum, SchemaBuilderInt, SchemaBuilderGeneric } from "./";
+import { SimpleTypes } from "../models";
 export declare class SchemaBuilder {
     /**
      * Starts building a schema as an object.
@@ -35,4 +36,6 @@ export declare class SchemaBuilder {
      * @return SchemaBuilderEnum. It allows to set validations for enums.
      */
     enum(...params: any[]): SchemaBuilderEnum;
+    type(...types: SimpleTypes[]): SchemaBuilderGeneric;
+    $ref(ref: string): SchemaBuilderGeneric;
 }

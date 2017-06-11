@@ -31,7 +31,13 @@ describe("Array test", () => {
         let items = [new SchemaBuilder().number()];
 
         expect(schema.items(...items, new SchemaBuilder().string()).getSchema())
-            .deep.include({ items: [{ type: "number" }, { type: "number" }, { type: "string" }] });
+            .deep.include({
+                items: [
+                    { type: "number" },
+                    { type: "number" },
+                    { type: "string" }
+                ]
+            });
     });
 
     it("Full check.", () => {

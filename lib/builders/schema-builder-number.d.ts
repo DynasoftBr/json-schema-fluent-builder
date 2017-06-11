@@ -1,11 +1,12 @@
 import { SchemaBuilderCore } from "./";
+import { SchemaModel } from "../models/";
 import { NumberBuilder } from "./interfaces";
 /**
  * Exposes methods to validate number fields in json documents.
  * @class
  */
 export declare class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber> implements NumberBuilder<SchemaBuilderNumber> {
-    constructor();
+    constructor(schema?: SchemaModel);
     /**
      * Set the maximum for this property.
      * @param i A number indicating the maximum for this property.

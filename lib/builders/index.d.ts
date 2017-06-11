@@ -6,3 +6,4 @@ export * from "./schema-builder-number";
 export * from "./schema-builder-int";
 export * from "./schema-builder-array";
 export * from "./schema-builder-enum";
+export * from "./schema-builder-generic";

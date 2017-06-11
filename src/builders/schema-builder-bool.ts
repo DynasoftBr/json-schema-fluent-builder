@@ -1,5 +1,5 @@
 import { SchemaBuilderCore } from "./";
-import { SimpleTypes } from "../models/";
+import { SimpleTypes, SchemaModel } from "../models/";
 import { BoolBuilder } from "./interfaces";
 
 /**
@@ -9,8 +9,8 @@ import { BoolBuilder } from "./interfaces";
 export class SchemaBuilderBool extends SchemaBuilderCore<SchemaBuilderBool>
     implements BoolBuilder<SchemaBuilderBool> {
 
-    constructor() {
-        super();
+    constructor(schema?: SchemaModel) {
+        super(schema);
 
         this.schema.type = SimpleTypes.boolean;
     }

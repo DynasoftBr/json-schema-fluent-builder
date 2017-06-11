@@ -3,9 +3,15 @@ import { SimpleTypes } from "./simple-types";
 export interface SchemaModel {
     id?: string;
     $schema?: string;
+    $ref?: string;
+    allOf?: SchemaModel[];
+    anyOf?: SchemaModel[];
+    oneOf?: SchemaModel[];
+    not?: SchemaModel;
+    definations?: object;
     description?: string;
     title?: string;
-    type?: SimpleTypes;
+    type?: SimpleTypes | SimpleTypes[];
     default?: any;
     enum?: string[];
 
@@ -35,5 +41,6 @@ export interface SchemaModel {
     minProperties?: number;
     required?: string[];
     properties?: object;
-
+    patternProperties?: object;
+    dependencies?: object;
 }

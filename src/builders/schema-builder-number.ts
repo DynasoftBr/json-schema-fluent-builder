@@ -1,5 +1,5 @@
 import { SchemaBuilderCore } from "./";
-import { SimpleTypes } from "../models/";
+import { SimpleTypes, SchemaModel } from "../models/";
 import { NumberBuilder } from "./interfaces";
 
 /**
@@ -9,8 +9,8 @@ import { NumberBuilder } from "./interfaces";
 export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
     implements NumberBuilder<SchemaBuilderNumber> {
 
-    constructor() {
-        super();
+    constructor(schema?: SchemaModel) {
+        super(schema);
 
         this.schema.type = SimpleTypes.number;
     }
@@ -22,7 +22,8 @@ export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
      */
     max(i: number, exclusive?: boolean) {
         this.schema.maximum = i;
-        this.schema.exclusiveMaximum = exclusive;
+        if (exclusive)
+            this.schema.exclusiveMaximum = exclusive;
         return this;
     }
 
@@ -33,7 +34,8 @@ export class SchemaBuilderNumber extends SchemaBuilderCore<SchemaBuilderNumber>
      */
     min(i: number, exclusive?: boolean) {
         this.schema.minimum = i;
-        this.schema.exclusiveMinimum = exclusive;
+        if (exclusive)
+            this.schema.exclusiveMinimum = exclusive;
         return this;
     }
 
