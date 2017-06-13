@@ -1,6 +1,6 @@
 .git*
 src/
-test/
+tests/
 .vscode/
 tsconfig.json
 tslint.json
