@@ -4,5 +4,31 @@ This package allows you to fluent build schemas based on draft-04 to validate js
 
 ## Getting started
 
-    var jsfb = require('json-schema-fluent-builder');
-    var schema = new jsfb.SchemaBuilder();
+    var SchemaBuilder = require("json-schema-fluent-builder").SchemaBuilder;
+
+    var schema = new SchemaBuilder().object();
+    schema.props({
+        name: new SchemaBuilder().string(),
+        age: new SchemaBuilder().int(),
+        birthDate: new SchemaBuilder().string().format("date-time")
+    }).required("name");
+
+    console.log(schema.getSchema());
+    // {
+    //     "type": "object",
+    //     "properties": {
+    //         "name": {
+    //         "type": "string"
+    //         },
+    //         "age": {
+    //         "type": "integer"
+    //         },
+    //         "birthDate": {
+    //         "type": "string",
+    //         "format": "date-time"
+    //         }
+    //     },
+    //     "required": [
+    //         "name"
+    //     ]
+    // }

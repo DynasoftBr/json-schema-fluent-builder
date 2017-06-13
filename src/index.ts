@@ -1,7 +1,3 @@
-import { SchemaBuilder } from "./builders/schema-builder";
-
-let schema = new SchemaBuilder().array();
-
-schema.items(new SchemaBuilder().int());
+// import { SchemaBuilder } from "./builders/schema-builder";
 
 export { SchemaBuilder } from "./builders/schema-builder";
