@@ -1,6 +1,6 @@
 {
   "name": "json-schema-fluent-builder",
-  "version": "0.9.2",
+  "version": "0.9.5",
   "description": "A package to fluent build json schemas.",
   "repository": {
     "type": "git",
@@ -34,6 +34,6 @@
     "chai": "4.0.1",
     "ts-node": "3.0.6"
   },
-  "main": "index",
-  "types": "index.d.ts"
+  "main": "lib/index",
+  "types": "lib/index.d.ts"
 }
