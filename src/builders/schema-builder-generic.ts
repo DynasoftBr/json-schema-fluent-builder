@@ -127,4 +127,9 @@ export class SchemaBuilderGeneric extends SchemaBuilderCore<SchemaBuilderGeneric
         this.arrayBuilder.items(val);
         return this;
     }
+
+    enum(...params: any[]): SchemaBuilderGeneric {
+        this.enumBuilder(val);
+        return this;
+    }
 }

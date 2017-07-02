@@ -59,7 +59,7 @@ export class SchemaBuilder {
      * @return SchemaBuilderEnum. It allows to set validations for enums.
      */
     enum(...params: any[]): SchemaBuilderEnum {
-        return new SchemaBuilderEnum(...params);
+        return new SchemaBuilderEnum({}).enum(...params);
     }
 
     type(...types: SimpleTypes[]): SchemaBuilderGeneric {

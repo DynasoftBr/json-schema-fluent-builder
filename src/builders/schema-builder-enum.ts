@@ -1,5 +1,6 @@
 import { SchemaBuilderCore } from "./";
 import { EnumBuilder } from "./interfaces";
+import { SchemaModel } from "../models";
 
 /**
  * Exposes methods to validate enum fields in json documents.
@@ -8,9 +9,12 @@ import { EnumBuilder } from "./interfaces";
 export class SchemaBuilderEnum extends SchemaBuilderCore<SchemaBuilderEnum>
     implements EnumBuilder<SchemaBuilderEnum> {
 
-    constructor(...params: any[]) {
-        super();
+    constructor(schema?: SchemaModel) {
+        super(schema);
+    }
 
+    enum(...params: any[]): SchemaBuilderEnum {
         this.schema.enum = params;
+        return this;
     }
 }
