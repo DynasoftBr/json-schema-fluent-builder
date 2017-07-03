@@ -32,4 +32,5 @@ export declare class SchemaBuilderGeneric extends SchemaBuilderCore<SchemaBuilde
     uniqueItems(b: boolean): SchemaBuilderGeneric;
     items(...items: (CoreBuilder<any> | SchemaModel)[]): SchemaBuilderGeneric;
     additionalItems(val: boolean | CoreBuilder<any>): SchemaBuilderGeneric;
+    enum(...params: any[]): SchemaBuilderGeneric;
 }

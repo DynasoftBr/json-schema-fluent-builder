@@ -129,7 +129,7 @@ export class SchemaBuilderGeneric extends SchemaBuilderCore<SchemaBuilderGeneric
     }
 
     enum(...params: any[]): SchemaBuilderGeneric {
-        this.enumBuilder(val);
+        this.enumBuilder.enum(...params);
         return this;
     }
 }
