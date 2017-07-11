@@ -51,7 +51,10 @@ export class SchemaBuilderObject extends SchemaBuilderCore<SchemaBuilderObject>
             if (!this.schema.properties)
                 this.schema.properties = {};
 
-            (<any>this.schema.properties)[name] = propSchema;
+            if (propSchema instanceof SchemaBuilderCore)
+                (<any>this.schema.properties)[name] = propSchema.getSchema();
+            else
+                (<any>this.schema.properties)[name] = propSchema;
         }
 
         if (required)
