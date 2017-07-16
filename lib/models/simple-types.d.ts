@@ -6,5 +6,6 @@ export declare const SimpleTypes: {
     integer: "integer";
     null: "null";
     object: "object";
+    any: "any";
 };
 export declare type SimpleTypes = keyof typeof SimpleTypes;

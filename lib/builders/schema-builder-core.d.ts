@@ -32,7 +32,7 @@ export declare abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
     anyOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
     oneOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
     not(val: SchemaModel | CoreBuilder<any>): T;
-    definitions(name: string, val: object): T;
+    definitions(name: string, schema: SchemaBuilderCore<any>): T;
     /**
      * @return The current schema.
      */

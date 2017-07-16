@@ -8,6 +8,6 @@ function strEnum<T extends string>(o: Array<T>): {[K in T]: K} {
 export const SimpleTypes = strEnum(["array",
     "boolean", "integer",
     "null", "number",
-    "object", "string"]);
+    "object", "string", "any"]);
 
 export type SimpleTypes = keyof typeof SimpleTypes;
