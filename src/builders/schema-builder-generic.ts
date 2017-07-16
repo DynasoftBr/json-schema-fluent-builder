@@ -29,8 +29,12 @@ export class SchemaBuilderGeneric extends SchemaBuilderCore<SchemaBuilderGeneric
         this.objectBuilder = new SchemaBuilderObject(schema);
         this.stringBuilder = new SchemaBuilderString(schema);
 
-        if (types.length > 0)
+        delete (schema.type);
+
+        if (types.length > 1)
             this.schema.type = types;
+        else if (types.length == 1)
+            this.schema.type = types[0];
     }
 
     maxLength(i: number): SchemaBuilderGeneric {

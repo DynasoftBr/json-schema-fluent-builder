@@ -7,7 +7,7 @@ export interface SchemaModel {
     anyOf?: SchemaModel[];
     oneOf?: SchemaModel[];
     not?: SchemaModel;
-    definations?: object;
+    definitions?: object;
     description?: string;
     title?: string;
     type?: SimpleTypes | SimpleTypes[];
