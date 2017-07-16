@@ -8,7 +8,7 @@ export interface CoreBuilder<T> {
     anyOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
     oneOf(val: SchemaModel[] | CoreBuilder<any>[]): T;
     not(val: SchemaModel | CoreBuilder<any>): T;
-    definitions(name: string, val: object): T;
+    definitions(name: string, schema: CoreBuilder<any>): T;
     description(desc: string): T;
     title(t: string): T;
     default(d: any): T;

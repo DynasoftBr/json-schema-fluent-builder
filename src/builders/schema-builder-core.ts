@@ -116,16 +116,12 @@ export abstract class SchemaBuilderCore<T> implements CoreBuilder<T> {
         return <any>this;
     }
 
-    definitions(name: string, val: object): T {
-        Object.keys(val).forEach(function (key, index) {
-            if ((<any>val)[key] instanceof SchemaBuilderCore)
-                (<any>val)[key] = (<SchemaBuilderCore<any>>(<any>val)[key]).getSchema();
-        });
+    definitions(name: string, schema: SchemaBuilderCore<any>): T {
 
         if (!this.schema.definitions)
             this.schema.definitions = {};
 
-        (<any>this.schema.definitions)[name] = val;
+        (<any>this.schema.definitions)[name] = schema.getSchema();
         return <any>this;
     }
 
