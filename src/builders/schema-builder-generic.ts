@@ -128,7 +128,7 @@ export class SchemaBuilderGeneric extends SchemaBuilderCore<SchemaBuilderGeneric
     }
 
     additionalItems(val: boolean | CoreBuilder<any>): SchemaBuilderGeneric {
-        this.arrayBuilder.items(val);
+        this.arrayBuilder.additionalItems(val);
         return this;
     }
 
