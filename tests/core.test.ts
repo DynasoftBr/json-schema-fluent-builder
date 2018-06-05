@@ -1,7 +1,6 @@
 import { SchemaBuilder } from "../src";
 import { expect } from "chai";
 import "mocha";
-import { CoreBuilder } from "../src/builders/interfaces/core-builder";
 
 let schema = new SchemaBuilder().string();
 describe("Core parameters test", () => {
@@ -103,30 +102,16 @@ describe("Core parameters test", () => {
         });
     });
 
-    it("Property 'definations' as 'SchemaModel'.", () => {
-        expect(schema.definations({
-            positiveInteger: new SchemaBuilder().int().min(0).getSchema()
-        }).getSchema()).deep.include({
-            definations: {
-                positiveInteger: {
-                    type: "integer",
-                    minimum: 0
+    it("Property 'definitions' as 'SchemaModel'.", () => {
+        expect(schema.definitions("positiveInteger", new SchemaBuilder().int().min(0))
+            .getSchema()).deep.include({
+                definitions: {
+                    positiveInteger: {
+                        type: "integer",
+                        minimum: 0
+                    }
                 }
-            }
-        });
-    });
-
-    it("Property 'definations' as 'SchemaBuilder'.", () => {
-        expect(schema.definations({
-            positiveInteger: new SchemaBuilder().int().min(0)
-        }).getSchema()).deep.include({
-            definations: {
-                positiveInteger: {
-                    type: "integer",
-                    minimum: 0
-                }
-            }
-        });
+            });
     });
 
     it("Property 'required' should be equals ['name', 'sureName'].", () => {
