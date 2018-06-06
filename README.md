@@ -1,10 +1,6 @@
-# Atentition, this package is not intended to be used in your application
-
-This package is for a particular purpose.
-
 ## A simple package to build json schemas
 
-This package allows you to fluent build schemas based on draft-04 to validate json objects.
+This package allows to fluent build schemas based on draft-04 to validate json objects.
 
 ## Getting started
 
