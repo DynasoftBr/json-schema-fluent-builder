@@ -1,7 +1,6 @@
 import { SchemaBuilder } from "../src";
 import { expect } from "chai";
 import "mocha";
-import { CoreBuilder } from "../src/builders/interfaces/core-builder";
 
 let schema = new SchemaBuilder().array();
 describe("Array test", () => {
@@ -27,6 +26,11 @@ describe("Array test", () => {
             .deep.include({ items: { type: "number" } });
     });
 
+    it("No additional items.", () => {
+        expect(schema.additionalItems(false).getSchema())
+            .deep.include({ items: { type: "number" }, additionalItems: false });
+    });
+
     it("Property items as an array of subSchema.", () => {
         let items = [new SchemaBuilder().number()];
 
@@ -45,6 +49,7 @@ describe("Array test", () => {
 
         expect(schema.getSchema())
             .deep.equals({
+                additionalItems: false,
                 type: "array",
                 uniqueItems: true,
                 maxItems: 5,

@@ -1,7 +1,6 @@
 import { SchemaBuilder } from "../src";
 import { expect } from "chai";
 import "mocha";
-import { CoreBuilder } from "../src/builders/interfaces/core-builder";
 
 let schema = new SchemaBuilder().object();
 describe("Object test", () => {
