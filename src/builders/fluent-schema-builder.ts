@@ -357,7 +357,7 @@ export class FluentSchemaBuilder {
                 schemaItems.push(<any>itm);
         });
 
-        // If items are be setting first time
+        // If items are being set first time
         if (!this.schema.items) {
             // And the array contains only one SchemaModel, set '.items' property to single object.
             if (schemaItems.length == 1)
@@ -396,5 +396,26 @@ export class FluentSchemaBuilder {
     enum(...params: any[]): FluentSchemaBuilder {
         this.schema.enum = params;
         return this;
+    }
+
+    if(condition: FluentSchemaBuilder | SchemaModel) {
+        if (condition instanceof FluentSchemaBuilder)
+            this.schema.if = condition.getSchema();
+        else
+            this.schema.if = condition;
+    }
+
+    then(condition: FluentSchemaBuilder | SchemaModel) {
+        if (condition instanceof FluentSchemaBuilder)
+            this.schema.then = condition.getSchema();
+        else
+            this.schema.then = condition;
+    }
+
+    else(condition: FluentSchemaBuilder | SchemaModel) {
+        if (condition instanceof FluentSchemaBuilder)
+            this.schema.then = condition.getSchema();
+        else
+            this.schema.then = condition;
     }
 }

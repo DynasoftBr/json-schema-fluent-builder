@@ -43,4 +43,7 @@ export interface SchemaModel {
     properties?: object;
     patternProperties?: object;
     dependencies?: object;
+    if?: SchemaModel;
+    then?: SchemaModel;
+    else?: SchemaModel;
 }
